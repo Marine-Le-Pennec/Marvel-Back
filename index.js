@@ -4,6 +4,10 @@ const app = express();
 const formidableMiddleware = require("express-formidable");
 const mongoose = require("mongoose");
 
+// Importation cors
+const cors = require("cors");
+app.use(cors());
+
 require("dotenv").config();
 app.use(formidableMiddleware());
 
@@ -14,10 +18,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
-
-// Importation cors
-const cors = require("cors");
-app.use(cors());
 
 // Appel de la route pour recherche des personnages et des comics
 const marvelbddRoutes = require("./routes/marvelbdd");
